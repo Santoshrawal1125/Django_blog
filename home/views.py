@@ -33,18 +33,6 @@ def contact(request):
     return render(request, 'contact.html', views)
 
 
-def blog_home(request):
-    views = {}
-    views['blogs'] = Blog.objects.all()
-    return render(request, 'blog-home.html', views)
-
-
-def blog_single(request, id):
-    views = {}
-    views['blogs_details'] = Blog.objects.filter(id = id)
-    return render(request, 'blog-single.html', views)
-
-
 def portfolio(request):
     return render(request, 'portfolio.html')
 
@@ -55,3 +43,15 @@ def price(request):
 
 def services(request):
     return render(request, 'services.html')
+
+
+def blog_home(request):
+    views = {}
+    views['blogs'] = Blog.objects.all()
+    return render(request,'blog-home.html',views)
+
+
+def blog_single(request,id):
+    views = {}
+    views['blog_details'] = Blog.objects.filter(id = id)
+    return render(request,'blog-single.html',views)
