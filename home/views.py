@@ -39,6 +39,12 @@ def blog_home(request):
     return render(request, 'blog-home.html', views)
 
 
+def blog_single(request, id):
+    views = {}
+    views['blogs_details'] = Blog.objects.filter(id = id)
+    return render(request, 'blog-single.html', views)
+
+
 def portfolio(request):
     return render(request, 'portfolio.html')
 
@@ -49,7 +55,3 @@ def price(request):
 
 def services(request):
     return render(request, 'services.html')
-
-
-def blog_single(request):
-    return render(request, 'blog-single.html')
