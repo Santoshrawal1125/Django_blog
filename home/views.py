@@ -18,6 +18,18 @@ def about(request):
 def contact(request):
     views = {}
     views['contactus'] = ContactInformation.objects.all()
+    if request.method == 'POST':
+        na = request.POST['name']
+        em = request.POST['email']
+        sub = request.POST['subject']
+        mes = request.POST['message']
+        data = Contact.objects.create(
+            name=na,
+            email=em,
+            subject=sub,
+            message=mes
+        )
+        data.save()
     return render(request, 'contact.html', views)
 
 
@@ -31,3 +43,11 @@ def price(request):
 
 def services(request):
     return render(request, 'services.html')
+
+
+def blog_home(request):
+    return render(request, 'blog-home.html')
+
+
+def blog_single(request):
+    return render(request, 'blog-single.html')
